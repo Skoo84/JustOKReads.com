@@ -1,5 +1,5 @@
 <?php
-echo "test page";
+echo "test page new";
 $servername = "echipa5.cio39zzweoyk.eu-west-1.rds.amazonaws.com";
 $username = "admin";
 $password = "nuav3Msef";
