@@ -13,59 +13,42 @@
     <input type="submit" value="Search" />
 </form>
 
-
-
-
-
 <?php
-
-// if (isset($_SESSION['Username']))
-//   {
-//     require_once ("config.php");
-//     $orderby = $_SESSION['Orderby'];
-//     $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
-//     $query="SELECT * FROM $tbl_name ORDER BY username $orderby";
-//     $result=mysqli_query($db,$query);
-//     while ($r=mysqli_fetch_array($result)) {
-//         $user4=$r['username'];
-//         echo "<div class='row'>";
-//         echo "<div class='column left'><p align='left'>".$user4."</p></div>";
-//         $nume4=$r['nume'];
-//         $prenume4=$r['prenume'];
-//         echo "<div class='column middle'><p align='left'>".$nume4." ".$prenume4."</p></div>";
-//         $id4=$r['id'];
-//         echo "<div class='column right'><p align='left'><a href='utilizatori.php?id=$id4' target='_self'>Mai multe detalii</a></p></div>";
-//         echo"</div>";
-//       }
-//   }
-// else
 if(isset($_GET['query']))
 {
+
 
     echo "<p------------------------------------------------p>";
     echo"<h1>|Results for Authors|</h1>";
     echo "<p------------------------------------------------p>";
+
 
     $resultFromForm = $_GET['query']; 
     require_once ("config.php");
     $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
     $query="SELECT * FROM $tbl_name_authors WHERE NAME LIKE '%$resultFromForm%'";
     $result=mysqli_query($db,$query);
+    if ($result->num_rows > 0){
+
+
     while ($r=mysqli_fetch_array($result)) {
         $authorid=$r['id'];
         $authorname=$r['name'];
-        echo "<a align='left' href='http://www.justokreads.com/author/$authorid'> Name of the Author: ".$authorname."</a> <br />";
+        echo "<a align='left' href='http://localhost/JustOKReads.com/author.php?authorid=$authorid'> Name of the Author: ".$authorname."</a> <br />";
         $authorbio=$r['bio'];
         echo "<p align='left'> Bio: ".$authorbio."</p>";
         $authorpic=$r['picture'];
         echo "<p align='left'> Pic: ".$authorpic."</p>";
         echo "<p align='left'> ------------------------------</p>";
       }
+    } else {echo "0 results";}
 
       //Querry for the name of the books
+
       echo "<p------------------------------------------------p>";
       echo"<h1>|Results for Books|</h1>";
       echo "<p------------------------------------------------p>";
+
 
       $query="SELECT b.id, b.title, b.publisher_id, b.release_date, b.cover_photo, b.description, p.name
       FROM books b
@@ -73,23 +56,25 @@ if(isset($_GET['query']))
       WHERE b.title LIKE '%$resultFromForm%'";
 
       $result=mysqli_query($db,$query);
+      if ($result->num_rows > 0){
+
       while ($r=mysqli_fetch_array($result)) {
           $bookid=$r['id'];
           $booktitle=$r['title'];
-          echo "<a align='left' href='http://www.justokreads.com/book/$bookid'> Title of the Book: ".$booktitle."</a><br />";
+          echo "<a align='left' href='http://www.justokreads.com/book.php?id=$bookid'> Title of the Book: ".$booktitle."</a><br />";
           $publisherId=$r['publisher_id'];
           $publisherName=$r['name'];
-          echo "<a align='left' href='http://www.justokreads.com/publisher/$publisherId'> Publisher :".$publisherName."</a> <br />";
+          echo "<a align='left' href='http://www.justokreads.com/publisher.php?id=$publisherId'> Publisher :".$publisherName."</a> <br />";
           $releaseDate=$r['release_date'];
           $coverPhoto=$r['cover_photo'];
           $description=$r['description'];
           echo "<span align='left'>Release Date : ".$releaseDate.", Cover Photo: ".$coverPhoto.", Description:".$description."</span>";
           echo "<p align='left'> ------------------------------</p>";
         }
-
-
-
+    } else {echo "0 results";}
+    $db->close();
     }
+    
 ?>
 </body>
 </html>
