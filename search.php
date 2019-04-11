@@ -14,6 +14,9 @@
 </form>
 
 <?php
+
+require_once ("config.php");
+
 if(isset($_GET['query']))
 {
 
@@ -24,7 +27,7 @@ if(isset($_GET['query']))
 
 
     $resultFromForm = $_GET['query']; 
-    require_once ("config.php");
+
     $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
     $query="SELECT * FROM $tbl_name_authors WHERE NAME LIKE '%$resultFromForm%'";
     $result=mysqli_query($db,$query);
@@ -38,12 +41,14 @@ if(isset($_GET['query']))
         $authorbio=$r['bio'];
         echo "<p align='left'> Bio: ".$authorbio."</p>";
         $authorpic=$r['picture'];
-        echo "<p align='left'> Pic: ".$authorpic."</p>";
+        echo "<img src='".$authorpic."' alt='".$authorname."' style='width:300px;height:200px'>";
+
+        
         echo "<p align='left'> ------------------------------</p>";
       }
     } else {echo "0 results";}
 
-      //Querry for the name of the books
+      //Querry for the books
 
       echo "<p------------------------------------------------p>";
       echo"<h1>|Results for Books|</h1>";
@@ -61,18 +66,41 @@ if(isset($_GET['query']))
       while ($r=mysqli_fetch_array($result)) {
           $bookid=$r['id'];
           $booktitle=$r['title'];
-          echo "<a align='left' href='http://www.justokreads.com/book.php?id=$bookid'> Title of the Book: ".$booktitle."</a><br />";
+          echo "<a align='left' href='http://localhost/JustOKReads.com/author.php?id=$bookid'> Title of the Book: ".$booktitle."</a><br />";
           $publisherId=$r['publisher_id'];
           $publisherName=$r['name'];
-          echo "<a align='left' href='http://www.justokreads.com/publisher.php?id=$publisherId'> Publisher :".$publisherName."</a> <br />";
+          echo "<a align='left' href='http://localhost/JustOKReads.com/author.php?id=$publisherId'> Publisher :".$publisherName."</a> <br />";
           $releaseDate=$r['release_date'];
           $coverPhoto=$r['cover_photo'];
           $description=$r['description'];
-          echo "<span align='left'>Release Date : ".$releaseDate.", Cover Photo: ".$coverPhoto.", Description:".$description."</span>";
+          echo "<span align='left'>Release Date : ".$releaseDate.", Description:".$description."</span> <br />";
+          echo "<img src='".$coverPhoto."' alt='".$booktitle."' style='width:300px;height:200px'>";
           echo "<p align='left'> ------------------------------</p>";
         }
     } else {echo "0 results";}
-    $db->close();
+
+
+
+    // querry for the publishers
+
+
+    echo "<p------------------------------------------------p>";
+    echo"<h1>|Results for Publishers|</h1>";
+    echo "<p------------------------------------------------p>";
+
+    $query="SELECT * FROM publishers WHERE name LIKE '%$resultFromForm%'";
+    $result=mysqli_query($db,$query);
+    if ($result->num_rows > 0){
+
+    while ($r=mysqli_fetch_array($result)) {
+        $publisherid=$r['id'];
+        $publishername=$r['name'];
+        echo "<p align='left'> Publisher :".$publishername."</p>";
+        echo "<p align='left'> ------------------------------</p>";
+      }
+  } else {echo "0 results";}
+  $db->close();
+
     }
     
 ?>
