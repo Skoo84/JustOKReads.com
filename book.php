@@ -11,7 +11,7 @@
 if(isset($_GET['bookid']))
 {
     require_once ("config.php");
-    $idAuthor = $_GET['bookid']; 
+    $idBook = $_GET['bookid']; 
 
     $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
     $query="SELECT * FROM $tbl_name_books WHERE id = '$idBook'";
@@ -22,7 +22,7 @@ if(isset($_GET['bookid']))
     while ($r=mysqli_fetch_array($result)) {
         $bookid=$r['id'];
         $bookname=$r['title'];
-        echo "<a align='left' href='http://JustOKReads.com/book.php?bookid=$bookid'> Name of the Book: ".$authorname."</a> <br />";
+        echo "<a align='left' href='http://JustOKReads.com/book.php?bookid=$bookid'> ".$bookname."</a> <br />";
         $releasedate=$r['release_date'];
         echo "<p align='left'> Bio: ".$releasedate."</p>";
         $coverpic=$r['cover_photo'];
