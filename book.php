@@ -24,9 +24,9 @@ if(isset($_GET['bookid']))
         $bookname=$r['title'];
         echo "<a align='left' href='http://JustOKReads.com/book.php?bookid=$bookid'> ".$bookname."</a> <br />";
         $releasedate=$r['release_date'];
-        echo "<p align='left'> Bio: ".$releasedate."</p>";
+        echo "<p align='left'> Release date: ".$releasedate."</p>";
         $coverpic=$r['cover_photo'];
-        echo "<p align='left'> Pic: ".$coverpic."</p>";
+        echo "<img src='".$coverpic."' alt='".$bookname."' style='width:300px;height:200px'>";
         echo "<p align='left'> ------------------------------</p>";
       }
     } 
