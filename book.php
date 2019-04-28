@@ -35,24 +35,20 @@ if(isset($_GET['bookid']))
 
 
     $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
-    $query="SELECT a.id, a.name, a.bio, a.picture, b.id, b.title, b.publisher_id, b.release_date,b.cover_photo,b.description
+    $query="SELECT distinct a.name
     FROM authors a
-    INNER JOIN books_authors ba ON ba.author_id=a.id AND a.id='$idAuthor'
+    INNER JOIN books_authors ba ON ba.author_id=a.id AND a.id='$idBook'
     INNER JOIN books b ON ba.book_id=b.id";
     $result=mysqli_query($db,$query);
-
-    
 
 
 
     if ($result->num_rows > 0){
     while ($r=mysqli_fetch_array($result)) {
-        $publisherid=$r['publisher_id'];
-        $bookTitle=$r['title'];
-        echo "<p align='left'> Boook Name: ".$bookTitle."</p>";
-        $publisherID=$r['publisher_id'];
-        echo "<p align='left'> Publisher ID: ".$publisherid."</p>";
-        echo "<p align='left'> ------------------------------</p>";
+        
+        $authorname=$r['name'];
+        echo "<p align='left'> Written by: ".$authorname."</p>";
+      
       }
     } else {echo "The Author doesn't exist.";}
 
