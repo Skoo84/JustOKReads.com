@@ -22,7 +22,7 @@ if(isset($_GET['bookid']))
     while ($r=mysqli_fetch_array($result)) {
         $bookid=$r['id'];
         $bookname=$r['title'];
-        echo "<a align='left'  ".$bookname."</a> <br />";
+        echo "<p align='left'>  ".$bookname."</p> <br />";
         $releasedate=$r['release_date'];
         echo "<p align='left'> Release date: ".$releasedate."</p>";
         $coverpic=$r['cover_photo'];
