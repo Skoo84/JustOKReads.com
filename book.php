@@ -46,7 +46,7 @@ FROM    books b
 GROUP   BY b.id";
     $result=mysqli_query($db,$query);
 
-
+    echo "<p align='left'> Written by: ".result."</p>";
 
     if ($result->num_rows > 0){
     while ($r=mysqli_fetch_array($result)) {
