@@ -51,7 +51,7 @@ GROUP   BY b.id";
     if ($result->num_rows > 0){
     while ($r=mysqli_fetch_array($result)) {
         
-        $authorname=$r['name'];
+        $authorname=$r['authors'];
         echo "<p align='left'> Written by: ".$authorname."</p>";
       
       }
