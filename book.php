@@ -51,8 +51,7 @@ GROUP   BY b.id";
     if ($result->num_rows > 0){
     while ($r=mysqli_fetch_array($result)) {
         
-        $authorname=$r['authors'];
-        echo "<p align='left'> Written by: ".$authorname."</p>";
+        echo "<p align='left'> Written by: ".$r."</p>";
       
       }
     } else {echo "The Author doesn't exist.";}
