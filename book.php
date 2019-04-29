@@ -35,10 +35,15 @@ if(isset($_GET['bookid']))
 
 
     $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
-    $query="SELECT distinct a.name
-    FROM authors a
-    INNER JOIN books_authors ba ON ba.author_id=a.id AND a.id='$idBook'
-    INNER JOIN books b ON ba.book_id=b.id";
+    $query="SELECT  b.id, 
+    GROUP_CONCAT(a.name ORDER BY a.name) authors
+FROM    books b
+    INNER JOIN books_authors ba
+        ON b.id = ba.book_id 
+    INNER JOIn authors a
+        ON ba.author_id = a.id
+        WHERE b.id='$idbook'
+GROUP   BY b.id";
     $result=mysqli_query($db,$query);
 
 
