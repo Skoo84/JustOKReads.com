@@ -12,7 +12,7 @@ if(isset($_GET['authorid']))
 {
     require_once ("config.php");
     $idAuthor = $_GET['authorid']; 
-
+  
     $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
     $query="SELECT * FROM $tbl_name_authors WHERE id = '$idAuthor'";
     $result=mysqli_query($db,$query);
