@@ -14,7 +14,7 @@ if(isset($_GET['bookid']))
     $idBook = $_GET['bookid']; 
 
     $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
-    $query="SELECT * FROM $tbl_name_books WHERE id = '$idBook'";
+    $query="SELECT * FROM books WHERE id = '$idBook'";
     $result=mysqli_query($db,$query);
     if ($result->num_rows > 0){
 
