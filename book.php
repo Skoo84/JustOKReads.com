@@ -35,28 +35,29 @@ if(isset($_GET['bookid']))
 
 
     $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
-    $query="SELECT  b.id, 
-    GROUP_CONCAT(a.name ORDER BY a.name) authors
-FROM    books b
-    INNER JOIN books_authors ba
-        ON b.id = ba.book_id 
-    INNER JOIn authors a
-        ON ba.author_id = a.id
-        WHERE b.id='$idbook'
-GROUP   BY b.id";
+    
+    query="SELECT a.id, a.name
+    FROM authors a
+    JOIN books_authors ba ON a.id = ba.author_id
+    JOIN books b ON b.id = ba.book_id
+    WHERE b.id = '$idBook'";
     $result=mysqli_query($db,$query);
-
-
     if ($result->num_rows > 0){
-    while ($r=mysqli_fetch_array($result)) {
-        
-        echo "<p align='left'> Written by: ".$result."</p>";
-      
-      }
-    } else {echo "The Author doesn't exist.";}
 
-}
+
+    while ($r=mysqli_fetch_array($result)) {
+        $authorid=$r['id'];
+        $authorname=$r['name'];
+        echo "<a align='left' href='http://JustOKReads.com/author.php?authorid=$authorid'> Name of the Author: ".$authorname."</a> <br />";
+        $authorbio=$r['bio'];
+        echo "<p align='left'> Bio: ".$authorbio."</p>";
+        $authorpic=$r['picture'];
+        echo "<p align='left'> Pic: ".$authorpic."</p>";
+        echo "<p align='left'> ------------------------------</p>";
+      }
+    } 
     $db->close();
+
     
 ?>
 </body>
