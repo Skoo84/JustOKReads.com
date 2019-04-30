@@ -23,6 +23,8 @@ if(isset($_GET['bookid']))
         $bookid=$r['id'];
         $bookname=$r['title'];
         echo "<p align='left'>  ".$bookname."</p> <br />";
+        $bookdescription=$r['description'];
+        echo "<p align='left'>  ".$bookdescription."</p> <br />";
         $releasedate=$r['release_date'];
         echo "<p align='left'> Release date: ".$releasedate."</p>";
         $coverpic=$r['cover_photo'];
