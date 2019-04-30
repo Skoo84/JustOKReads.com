@@ -43,17 +43,15 @@ if(isset($_GET['bookid']))
     JOIN books b ON b.id = ba.book_id
     WHERE b.id = '$idBook'";
     $result=mysqli_query($db,$query);
+    echo "<p align='left'> ------------------------------</p>";
+    echo "<p align='left'> Written by:</p>";
     if ($result->num_rows > 0){
 
 
     while ($r=mysqli_fetch_array($result)) {
         $authorid=$r['id'];
         $authorname=$r['name'];
-        echo "<a align='left' href='http://JustOKReads.com/author.php?authorid=$authorid'> Name of the Author: ".$authorname."</a> <br />";
-        $authorbio=$r['bio'];
-        echo "<p align='left'> Bio: ".$authorbio."</p>";
-        $authorpic=$r['picture'];
-        echo "<p align='left'> Pic: ".$authorpic."</p>";
+        echo "<a align='left' href='http://JustOKReads.com/author.php?authorid=$authorid'>".$authorname."</a> <br />";
         echo "<p align='left'> ------------------------------</p>";
       }
     } 
