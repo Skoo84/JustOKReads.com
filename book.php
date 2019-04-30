@@ -32,7 +32,23 @@ if(isset($_GET['bookid']))
     } 
     $db->close();
 
+    $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
+    $query="SELECT r.book_id, avg(r.rating) FROM reviews r
+    where book_id = '$idBook'";
+    $result=mysqli_query($db,$query);
+    if ($result->num_rows > 0){
 
+
+    while ($r=mysqli_fetch_array($result)) {
+        $rating=$r['avg(r.rating)'];
+        
+        echo "<p align='left'> Rating: ".$rating."</p>";
+        echo "<p align='left'> ------------------------------</p>";
+      }
+    } 
+    $db->close();
+
+    
     
 
     $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
@@ -52,7 +68,7 @@ if(isset($_GET['bookid']))
         $authorid=$r['id'];
         $authorname=$r['name'];
         echo "<a align='left' href='http://JustOKReads.com/author.php?authorid=$authorid'>".$authorname."</a> <br />";
-        echo "<p align='left'> ------------------------------</p>";
+
       }
     } 
     $db->close();
