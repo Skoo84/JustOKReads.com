@@ -14,7 +14,7 @@ if(isset($_GET['bookid']))
     $idBook = $_GET['bookid']; 
 
     $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
-    $query="SELECT * FROM books WHERE id = '$idBook'";
+    $query="SELECT * FROM $tbl_name_books WHERE id = '$idBook'";
     $result=mysqli_query($db,$query);
     if ($result->num_rows > 0){
 
@@ -33,10 +33,11 @@ if(isset($_GET['bookid']))
     $db->close();
 
 
+    
 
     $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
     
-    query="SELECT a.id, a.name
+    $query="SELECT a.id, a.name
     FROM authors a
     JOIN books_authors ba ON a.id = ba.author_id
     JOIN books b ON b.id = ba.book_id
@@ -58,7 +59,7 @@ if(isset($_GET['bookid']))
     } 
     $db->close();
 
-    
+  } 
 ?>
 </body>
 </html>
