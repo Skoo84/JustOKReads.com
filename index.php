@@ -12,14 +12,13 @@ if (isset($_SESSION['Username']))
 // daca utilizatorul nu este autentificat
 else
   {
-    echo "<a href='login.php' target='_self'>Login</a>";
+    echo "<a href='loginTemporar.php' target='_self'>Login</a>";
     echo "&nbsp; | &nbsp;";
     echo "<a href='createUser.php' target='_self'>Inregistrare utilizator nou</a>";
-    echo "<p align='left'>Trebuie sa va autentificati sa vedeti datele utilizatorilor</p>";
+
   }
 ?>
 </div>
-<h2>Utilizatori inregistrati</h2>
 <?php
 // daca utilizatorul este autentificat se va afisa o lista cu utilizatorii in ordinea aleasa la login cu datele complete
 if (isset($_SESSION['Username']))

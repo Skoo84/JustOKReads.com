@@ -5,7 +5,7 @@
 // definirea valorilor pentru erori ca fiind goale. Altfel la prima afisare a formularului ar da o eroare
 $numeerr=$emailerr=$passworderr=$usernameerr="";
 // definirea variabilelor pentru valorile din formular. Daca nu am stabili, la prima afisare a formularului ar da eroare
-$birthDate=$roleId=$about=$nume1=$prenume1=$email1=$username1="";
+$birthDate=$roleId=$about=$nume1=$passwordUser=$email1=$username1="";
 //definirea valorii la eroarea principala. Daca intervine orice eroare la verificare formular, ii vom atribui o alta valoare
 $eroare=0;
 //se deschide fisierul de configurare, pentru a citi variabilele definite de noi
@@ -40,20 +40,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
             $eroare=1;
           }
       }
-      if (empty($_POST["prenume"]))
-        {
-          $prenumeerr="Prenumele este obligatoriu";
-          $eroare=1;
-        }
-      else
-        {
-          $prenume1=test_input($_POST["prenume"]);
-          if (!preg_match("/^[a-zA-Z ]*$/",$prenume1))
-            {
-              $prenumeerr="Numai litere si spatii sunt acceptate";
-              $eroare=1;
-            }
-        }
+ 
         if (empty($_POST["email"]))
           {
             $emailerr="Adresa de e-mail este obligatorie";
@@ -109,6 +96,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
             }
 
 // daca nu a fost nici o eroare la verificarea formularului, se va verifica in baza de date daca user-ul si e-mailul exista deja
+
+echo "<p>Numarul de erori este ".$eroare."</p>";
       if ($eroare==0)
        {
          require_once ("config.php");
@@ -148,12 +137,16 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
            $idnew=$result2['max']+1;
 // se sanitizeaza parola
            $parola1=test_input($_POST["parolaa"]);
+// se sanitizeaza about
+           $about1=test_input($_POST["about"]);
+// se sanitizeaza numele utilizatorului
+            $nume1=test_input($_POST["nume"]);           
 // se cripteaza parola
            $parola1=md5($parola1);
 
 // inserare in baza de date
             echo "<p> TRIMITEM DATELE LA BAZA DE DATE</p>";
-            $query="INSERT INTO $tbl_name_users (id, name, birth_date, username, email, password, role_id, about) VALUES ('$idnew', '$nume', '$birthDate', '$username1', '$email', '$password', '5','$about')";
+            $query="INSERT INTO $tbl_name_users (id, name, birth_date, username, email, password, role_id, about) VALUES ('$idnew', '$nume1', '$birthDate', '$username1', '$email1', '$parola1', '5','$about1')";
             $result=mysqli_query($db,$query);
 // se specifica pagina catre care se va redirectiona dupa inserare in baza de date
             header("Location: index.php");
@@ -169,7 +162,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     <span class="error">* <?php echo $numeerr;?></span><br><br>
     E-mail: <br><input type="text" name="email" value="<?php echo $email1; ?>" lenght="80">
     <span class="error">* <?php echo $emailerr;?></span><br><br>
-    Birth Date: <br><input type="date" name="birthDate" value="<?php echo $birthDate; ?>" lenght=80">
+    Birth Date: <br><input type="text" name="birthDate" value="<?php echo $birthDate; ?>" lenght=80">
     <br>    <br>
     About: <br><input type="text" name="about" value="<?php echo $about; ?>" lenght="240">
     <br>    <br>
@@ -193,5 +186,5 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
 <br><br>
 <a href='index.php' target='_self'>Prima pagina</a>
 &nbsp; | &nbsp;
-<a href='login.php' target='_self'>Login</a>
+<a href='loginTemporar.php' target='_self'>Login</a>
 </body></html>

@@ -9,9 +9,6 @@
         <br><br>
         Parola: <br><input type="password" name="parola" lenght="40">
         <br><br>
-        Ordoneaza utilizatorii:<br><input type="radio" name="order" value="ASC" checked> ascendent
-        <input type="radio" name="order" value="DESC"> descendent
-        <br><br>
         <input type="submit" name="submit" value="Login">
         <br>
     </fieldset>
