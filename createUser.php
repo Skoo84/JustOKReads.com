@@ -140,14 +140,16 @@ echo "<p>Numarul de erori este ".$eroare."</p>";
 // se sanitizeaza about
            $about1=test_input($_POST["about"]);
 // se sanitizeaza numele utilizatorului
-            $nume1=test_input($_POST["nume"]);           
+            $nume1=test_input($_POST["nume"]);
+               // se sanitizeaza data de nastere utilizatorului
+            $birthDate=test_input($_POST["birthDate"]);     
 // se cripteaza parola
            $parola1=md5($parola1);
 
 // inserare in baza de date
             echo "<p> TRIMITEM DATELE LA BAZA DE DATE</p>";
             
-$birthDate=date("Y-m-d",strtotime($birthDate));
+
             $query="INSERT INTO $tbl_name_users (id, name, birth_date, username, email, password, role_id, about) VALUES ('$idnew', '$nume1', '$birthDate', '$username1', '$email1', '$parola1', '5','$about1')";
             $result=mysqli_query($db,$query);
           
