@@ -150,7 +150,7 @@ echo "<p>Numarul de erori este ".$eroare."</p>";
 $birthDate=date("Y-m-d",strtotime($birthDate));
             $query="INSERT INTO $tbl_name_users (id, name, birth_date, username, email, password, role_id, about) VALUES ('$idnew', '$nume1', '$birthDate', '$username1', '$email1', '$parola1', '5','$about1')";
             $result=mysqli_query($db,$query);
-            echo $query;
+          
 // se specifica pagina catre care se va redirectiona dupa inserare in baza de date
             header("Location: index.php");
           }
