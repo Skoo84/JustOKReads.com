@@ -167,7 +167,7 @@ echo "<p>Numarul de erori este ".$eroare."</p>";
     <span class="error">* <?php echo $numeerr;?></span><br><br>
     E-mail: <br><input type="text" name="email" value="<?php echo $email1; ?>" lenght="80">
     <span class="error">* <?php echo $emailerr;?></span><br><br>
-    Birth Date: <br><input type="date" name="birthDate" value="<?php echo $birthDate; ?>" lenght=80">
+    Birth Date: <br><input type="date" name="birthDate" min="1900-01-01"value="<?php echo $birthDate; ?>" lenght=80">
     <br>    <br>
     About: <br><input type="text" name="about" value="<?php echo $about; ?>" lenght="240">
     <br>    <br>
