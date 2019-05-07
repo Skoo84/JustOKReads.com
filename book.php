@@ -64,8 +64,8 @@ if(isset($_GET['bookid']))
         $bookid=$r['id'];
         $bookname=$r['title'];
         echo "<p align='left'>  ".$bookname."</p> <br />";
+        echo "<p align='left'>  ".star_rating($rating)."</p> <br />";
         $bookdescription=$r['description'];
-
         echo "<p align='left'>  ".$bookdescription."</p> <br />";
         $releasedate=$r['release_date'];
         echo "<p align='left'> Release date: ".$releasedate."</p>";
@@ -122,11 +122,6 @@ if(isset($_GET['bookid']))
 </div>
 </body>
 <div class="ratings">
-     <p>3.5 star ratings: <?php echo star_rating(3.5); ?></p>
-     <p>5 star ratings: <?php echo star_rating(5); ?></p>
-     <p>2.5 star ratings: <?php echo star_rating(2.5); ?></p>
-     <p>4.5 star ratings: <?php echo star_rating(4.5); ?></p>
-     <p>4 star ratings: <?php echo star_rating(4); ?></p>
      <p>ratings: <?php echo star_rating($rating); ?></p>
   </div>
 </html>
