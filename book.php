@@ -3,11 +3,52 @@
 <head>
     <title>Book</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8-unicode-ci" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+    .ratings i {
+      color: #ff9900;
+    }
+  </style>
 </head>
 <body>
  
 
 <?php
+function star_rating($rating)
+{
+    $rating_round = round($rating * 2) / 2;
+    if ($rating_round <= 0.5 && $rating_round > 0) {
+        return '<i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>';
+    }
+    if ($rating_round <= 1 && $rating_round > 0.5) {
+        return '<i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>';
+    }
+    if ($rating_round <= 1.5 && $rating_round > 1) {
+        return '<i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>';
+    }
+    if ($rating_round <= 2 && $rating_round > 1.5) {
+        return '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>';
+    }
+    if ($rating_round <= 2.5 && $rating_round > 2) {
+        return '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>';
+    }
+    if ($rating_round <= 3 && $rating_round > 2.5) {
+        return '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>';
+    }
+    if ($rating_round <= 3.5 && $rating_round > 3) {
+        return '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i>';
+    }
+    if ($rating_round <= 4 && $rating_round > 3.5) {
+        return '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>';
+    }
+    if ($rating_round <= 4.5 && $rating_round > 4) {
+        return '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>';
+    }
+    if ($rating_round <= 5 && $rating_round > 4.5) {
+        return '<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>';
+    } 
+}
+
 if(isset($_GET['bookid']))
 {
     require_once ("config.php");
@@ -24,6 +65,8 @@ if(isset($_GET['bookid']))
         $bookname=$r['title'];
         echo "<p align='left'>  ".$bookname."</p> <br />";
         $bookdescription=$r['description'];
+
+       echo star_rating($rating);
         echo "<p align='left'>  ".$bookdescription."</p> <br />";
         $releasedate=$r['release_date'];
         echo "<p align='left'> Release date: ".$releasedate."</p>";
