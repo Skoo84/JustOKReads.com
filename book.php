@@ -114,7 +114,7 @@ if(isset($_GET['bookid']))
         echo "<a align='left' href='http://JustOKReads.com/author.php?authorid=$authorid'>".$authorname."</a> <br />";
 
       }
-    } 
+    }  
     $db->close();
 
   } 
@@ -122,7 +122,7 @@ if(isset($_GET['bookid']))
 </div>
 </body>
 <div class="ratings">
-     <p>ratings: <?php echo star_rating($rating); ?> from <?php echo ".$feedbacks."  ?> feedbacks </p>
+     <p>ratings: <?php echo star_rating($rating); ?> based on <?php echo "$feedbacks"  ?> reviews </p>
   </div>
   
 </html>
