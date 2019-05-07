@@ -76,7 +76,7 @@ if(isset($_GET['bookid']))
     $db->close();
 
     $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
-    $query="SELECT r.book_id, avg(r.rating) FROM reviews r
+    $query="SELECT r.book_id, avg(r.rating), count(r.rating) FROM reviews r
     where book_id = '$idBook'";
     $result=mysqli_query($db,$query);
     if ($result->num_rows > 0){
@@ -84,6 +84,7 @@ if(isset($_GET['bookid']))
 
     while ($r=mysqli_fetch_array($result)) {
         $rating=$r['avg(r.rating)'];
+        $feedbacks=$r['count(r.rating)'];
         
         echo "<p align='left'> Rating: ".$rating."</p>";
         echo "<p align='left'> ------------------------------</p>";
@@ -121,7 +122,7 @@ if(isset($_GET['bookid']))
 </div>
 </body>
 <div class="ratings">
-     <p>ratings: <?php echo star_rating($rating); ?></p>
+     <p>ratings: <?php echo star_rating($rating); ?> from <?php echo ".$feedbacks."  ?> feedbacks </p>
   </div>
   
 </html>
