@@ -1,3 +1,5 @@
+<div class="main">
+
 <?php # Script 13.7 - activate.php
 // This page activates the user's account.
 require_once("config.php");
@@ -58,3 +60,5 @@ if ( ($x > 0) && (strlen($y) == 32)) {
 } // End of main IF-ELSE.
 
 ?>
+
+</div>

@@ -11,6 +11,8 @@
   </style>
 </head>
 <body>
+<div class="main">
+
 <link rel="stylesheet" href="navbar.css">
 <?php include('navbar.php'); ?>
 

@@ -7,6 +7,7 @@
 </head>
 <body>
  
+<div class="main">
 
 <?php include('navbar.php'); ?>
 <?php
@@ -63,6 +64,7 @@ if(isset($_GET['authorid']))
     
 
 ?>
+</div>
 
 </body>
 </html>

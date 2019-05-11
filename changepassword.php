@@ -7,6 +7,7 @@
 
 </head>
 <body>
+<div class="main">
 
 <?php
 // This page allows a logged-in user to change their password.
@@ -97,5 +98,7 @@ if (!isset($_SESSION['user_name'])) {
     <?php
 }
 ?>
+</div>
+
 </body>
 </html>
