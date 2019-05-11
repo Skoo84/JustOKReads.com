@@ -1,6 +1,5 @@
 <?php
 session_start();
-include("head.php");
 // verificare user si parola
 if (isset($_POST['submit']))
   {

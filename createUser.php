@@ -2,6 +2,7 @@
   <style>.error {color:#FF0000;}</style>
 <body>
 <?php
+ session_start();
 // definirea valorilor pentru erori ca fiind goale. Altfel la prima afisare a formularului ar da o eroare
 $numeerr=$emailerr=$passworderr=$usernameerr="";
 // definirea variabilelor pentru valorile din formular. Daca nu am stabili, la prima afisare a formularului ar da eroare

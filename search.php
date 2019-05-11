@@ -8,14 +8,26 @@
  
 <h1>This wonderful search page is done. Almost ... ish </h1>
 
+
+
+
+
+
 <form action="search.php" method="GET">
     <input type="text" name="query" />
     <input type="submit" value="Search" />
 </form>
 
 <?php
+session_start();
+// se verifica daca utilizatorul este autentificat
+if (isset($_SESSION['Username']))
+  {
 
 require_once ("config.php");
+$userName = ($_SESSION['Username']);
+echo "<p>The user: ".$userName." is logged in.</p>";
+
 
 if(isset($_GET['query']))
 {
@@ -66,10 +78,10 @@ if(isset($_GET['query']))
       while ($r=mysqli_fetch_array($result)) {
           $bookid=$r['id'];
           $booktitle=$r['title'];
-          echo "<a align='left' href='http://localhost/JustOKReads.com/author.php?id=$bookid'> Title of the Book: ".$booktitle."</a><br />";
+          echo "<a align='left' href='http://localhost/JustOKReads.com/book.php?bookid=$bookid'> Title of the Book: ".$booktitle."</a><br />";
           $publisherId=$r['publisher_id'];
           $publisherName=$r['name'];
-          echo "<a align='left' href='http://localhost/JustOKReads.com/author.php?id=$publisherId'> Publisher :".$publisherName."</a> <br />";
+          echo "<a align='left' href='http://localhost/JustOKReads.com/book.php?bookid=$publisherId'> Publisher :".$publisherName."</a> <br />";
           $releaseDate=$r['release_date'];
           $coverPhoto=$r['cover_photo'];
           $description=$r['description'];
@@ -102,6 +114,17 @@ if(isset($_GET['query']))
   $db->close();
 
     }
+  }
+
+  // daca utilizatorul nu este autentificat
+else
+{
+  echo "<p>You are not logged in, in order to use the search functionality, you have to log in.</p> ";
+  echo "<a href='loginTemporar.php' target='_self'>Login</a>";
+  echo "&nbsp; | &nbsp;";
+  echo "<a href='createUser.php' target='_self'>Inregistrare utilizator nou</a>";
+
+}
     
 ?>
 </body>
