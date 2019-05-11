@@ -14,6 +14,8 @@
  
 
 <?php
+ session_start();
+
 function star_rating($rating)
 {
     $rating_round = round($rating * 2) / 2;
