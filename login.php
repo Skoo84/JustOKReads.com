@@ -4,20 +4,21 @@
 <link rel="stylesheet" href="navbar.css">
 <?php include('navbar.php'); ?>
 <body>
-<h2>Login</h2>
+    <div class="main2"></div>
+<h2>Login page</h2>
 <form method="post" action="user.php" target="_self">
     <fieldset>
         <legend>Login</legend>
-        Utilizator: <br><input type="text" name="username" lenght="40">
+        User Name: <br><input type="text" name="username" lenght="40">
         <br><br>
-        Parola: <br><input type="password" name="parola" lenght="40">
+        Password: <br><input type="password" name="parola" lenght="40">
         <br><br>
         <input type="submit" name="submit" value="Login">
         <br>
     </fieldset>
 </form>
 <br><br>
-<a href='index.php' target='_self'>Prima pagina</a>
+<a href='index.php' target='_self'>Home page</a>
 &nbsp; | &nbsp;
-<a href='createUser.php' target='_self'>Inregistrare utilizator nou</a>
+<a href='createUser.php' target='_self'>Create User</a>
 </body></html>

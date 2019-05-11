@@ -128,7 +128,7 @@ if(isset($_GET['query']))
 else
 {
   echo "<p>You are not logged in, in order to use the search functionality, you have to log in.</p> ";
-  echo "<a href='loginTemporar.php' target='_self'>Login</a>";
+  echo "<a href='login.php' target='_self'>Login</a>";
   echo "&nbsp; | &nbsp;";
   echo "<a href='createUser.php' target='_self'>Inregistrare utilizator nou</a>";
 

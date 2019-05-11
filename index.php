@@ -28,7 +28,7 @@ if (isset($_SESSION['Username']))
 else
   {
     echo "<p>The user IS NOT !!!!! NOT !LOGGED INNNNN!!!!!!</p>";
-    echo "<a href='loginTemporar.php' target='_self'>Login</a>";
+    echo "<a href='login.php' target='_self'>Login</a>";
     echo "&nbsp; | &nbsp;";
     echo "<a href='createUser.php' target='_self'>Inregistrare utilizator nou</a>";
 

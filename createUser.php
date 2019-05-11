@@ -5,6 +5,8 @@
 
 
 <?php include('navbar.php'); ?>
+<div class="main2">
+</div>
 <?php
  session_start();
 // definirea valorilor pentru erori ca fiind goale. Altfel la prima afisare a formularului ar da o eroare
@@ -196,5 +198,5 @@ echo "<p>Numarul de erori este ".$eroare."</p>";
 <br><br>
 <a href='index.php' target='_self'>Prima pagina</a>
 &nbsp; | &nbsp;
-<a href='loginTemporar.php' target='_self'>Login</a>
+<a href='login.php' target='_self'>Login</a>
 </body></html>

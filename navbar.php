@@ -40,6 +40,33 @@ body {
   padding: 16px;
   margin-bottom: 30px;
 }
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
 </style>
 </head>
 <body>
@@ -48,8 +75,9 @@ body {
 <a href="index.php" class="active">Home</a>
   <img src="logo.png" alt="JustOKReads.com" style="width:42px;height:42px;border:0;">
 </a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
+  <a href="search.php">Search</a>
+  <a href="login.php">Login</a>
+
 </div>
 
 </body>
