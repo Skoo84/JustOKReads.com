@@ -3,9 +3,12 @@
 <head>
     <title>Search</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="footer.css">
 </head>
 <body>
- 
+
+<!-- Anchor for footer - return to top of the page -->
+<a name="top"></a>
 <h1>This wonderful search page is done. Almost ... ish </h1>
 
 
@@ -17,6 +20,7 @@
     <input type="text" name="query" />
     <input type="submit" value="Search" />
 </form>
+
 
 <?php
 session_start();
@@ -81,7 +85,7 @@ if(isset($_GET['query']))
           echo "<a align='left' href='http://localhost/JustOKReads.com/book.php?bookid=$bookid'> Title of the Book: ".$booktitle."</a><br />";
           $publisherId=$r['publisher_id'];
           $publisherName=$r['name'];
-          echo "<a align='left' href='http://localhost/JustOKReads.com/book.php?bookid=$publisherId'> Publisher :".$publisherName."</a> <br />";
+          echo "<p align='left'> Publisher :".$publisherName."</p> <br />";
           $releaseDate=$r['release_date'];
           $coverPhoto=$r['cover_photo'];
           $description=$r['description'];
@@ -109,6 +113,9 @@ if(isset($_GET['query']))
         $publishername=$r['name'];
         echo "<p align='left'> Publisher :".$publishername."</p>";
         echo "<p align='left'> ------------------------------</p>";
+        echo "<br />";
+        echo "<br />";
+        echo "<br />";
       }
   } else {echo "0 results";}
   $db->close();
@@ -127,5 +134,7 @@ else
 }
     
 ?>
+<?php include('footer.php'); ?>
+
 </body>
 </html>
