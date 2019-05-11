@@ -11,7 +11,8 @@
   </style>
 </head>
 <body>
- 
+<link rel="stylesheet" href="navbar.css">
+<?php include('navbar.php'); ?>
 
 <?php
 function star_rating($rating)

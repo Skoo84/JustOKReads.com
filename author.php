@@ -3,10 +3,12 @@
 <head>
     <title>Search</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
  
 
+<?php include('navbar.php'); ?>
 <?php
 if(isset($_GET['authorid']))
 {
@@ -59,6 +61,8 @@ if(isset($_GET['authorid']))
 }
     $db->close();
     
+
 ?>
+
 </body>
 </html>

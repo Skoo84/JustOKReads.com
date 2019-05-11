@@ -1,6 +1,8 @@
 <html>
 <?php session_start();?>
 <?php include("config.php");?>
+<link rel="stylesheet" href="navbar.css">
+<?php include('navbar.php'); ?>
 <body>
 <div align="left">
 <?php

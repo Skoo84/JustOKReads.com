@@ -1,6 +1,9 @@
 <html>
   <style>.error {color:#FF0000;}</style>
 <body>
+
+<link rel="stylesheet" href="navbar.css">
+<?php include('navbar.php'); ?>
 <?php
  session_start();
 // definirea valorilor pentru erori ca fiind goale. Altfel la prima afisare a formularului ar da o eroare

@@ -3,11 +3,12 @@
 <head>
     <title>Search</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
 
 <!-- Anchor for footer - return to top of the page -->
+<div class="main">
 <a name="top"></a>
 <h1>This wonderful search page is done. Almost ... ish </h1>
 
@@ -21,7 +22,7 @@
     <input type="submit" value="Search" />
 </form>
 
-
+</div>
 <?php
 session_start();
 // se verifica daca utilizatorul este autentificat
@@ -134,7 +135,7 @@ else
 }
     
 ?>
-<?php include('footer.php'); ?>
+<?php include('navbar.php'); ?>
 
 </body>
 </html>
