@@ -1,4 +1,3 @@
-<div class="main">
 
 <?php # Script 13.7 - activate.php
 // This page activates the user's account.
@@ -61,4 +60,3 @@ if ( ($x > 0) && (strlen($y) == 32)) {
 
 ?>
 
-</div>
