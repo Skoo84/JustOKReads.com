@@ -46,8 +46,9 @@ body {
 
 <div class="navbar">
   <a href="index.php" class="active">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
+  <a href="search.php">Search</a>
+  <a href="login.php">Login</a>
+  <a href="createUser.php">Signup</a>
 </div>
 
 </body>
