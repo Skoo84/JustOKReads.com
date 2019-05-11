@@ -73,6 +73,28 @@ if(isset($_GET['bookid']))
 
       }
     } 
+    
+    $query3="SELECT b.id, b.publisher_id, p.name
+    FROM books b
+    JOIN publishers p ON b.publisher_id = p.id
+	
+    WHERE b.id = '$idBook'";
+    $result=mysqli_query($db,$query);
+    echo "<p align='left'> ------------------------------</p>";
+    echo "<p align='left'> Written by:</p>";
+    if ($result->num_rows > 0){
+
+
+    while ($r=mysqli_fetch_array($result)) {
+       
+        $publishername=$r['name'];
+        echo "<a align='left' >".$authorname."</a> <br />";
+
+      }
+    } 
+
+
+  
     $db->close();
 
   } 
