@@ -1,8 +1,9 @@
 <html>
   <style>.error {color:#FF0000;}</style>
+  <link rel="stylesheet" href="navbar.css">
 <body>
 
-<link rel="stylesheet" href="navbar.css">
+
 <?php include('navbar.php'); ?>
 <?php
  session_start();

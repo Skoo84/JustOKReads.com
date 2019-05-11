@@ -7,8 +7,11 @@
 </head>
 <body>
  
+<div class="main">
 
 <?php include('navbar.php'); ?>
+</div>
+
 <?php
 if(isset($_GET['authorid']))
 {
