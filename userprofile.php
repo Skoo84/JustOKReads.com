@@ -6,13 +6,15 @@
 <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">-->
 <!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf8-unicode-ci"/>
+    <link rel="stylesheet" href="navbar.css">
 
     <style>
 .border-success
     </style>
 </head>
 <body>
-
+<div class="main1">
+</div>
 <h1>The User Profile page in construction </h1>
 <div style="margin-bottom: 20px;">
     <a href=""> Edit User Profile</a><br>

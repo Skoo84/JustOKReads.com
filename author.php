@@ -7,7 +7,7 @@
 </head>
 <body>
  
-<div class="main">
+<div class="main2">
 
 <?php include('navbar.php'); ?>
 </div>
