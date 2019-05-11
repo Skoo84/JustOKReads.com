@@ -15,6 +15,8 @@
 <?php include('navbar.php'); ?>
 
 <?php
+ session_start();
+
 function star_rating($rating)
 {
     $rating_round = round($rating * 2) / 2;
@@ -122,16 +124,16 @@ if(isset($_GET['bookid']))
     JOIN publishers p ON b.publisher_id = p.id
 	
     WHERE b.id = '$idBook'";
-    $result=mysqli_query($db,$query);
+    $result=mysqli_query($db,$query3);
     echo "<p align='left'> ------------------------------</p>";
-    echo "<p align='left'> Written by:</p>";
+    echo "<p align='left'> Publisher:</p>";
     if ($result->num_rows > 0){
 
 
     while ($r=mysqli_fetch_array($result)) {
        
         $publishername=$r['name'];
-        echo "<a align='left' >".$authorname."</a> <br />";
+        echo "<a align='left' >".$publishername."</a> <br />";
 
       }
     } 
