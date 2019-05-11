@@ -46,7 +46,7 @@ body {
 
 <div class="navbar">
 <a href="index.php" class="active">Home</a>
-  <img src="logo.png" alt="JustOKReads.com">
+  <img src="logo.png" alt="JustOKReads.com" style="width:61px;border:0;">
 </a>
   <a href="#news">News</a>
   <a href="#contact">Contact</a>
