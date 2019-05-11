@@ -73,7 +73,7 @@ body {
 
 <div class="navbar">
 <a href="index.php" class="active">Home</a>
-  <img src="Logo.png" alt="JustOKReads.com" style="width:151px;border:0;">
+  <img src="logo.png" alt="JustOKReads.com" style="width:151px;border:0;">
 </a>
   <a href="search.php">Search</a>
   <a href="login.php">Login</a>
