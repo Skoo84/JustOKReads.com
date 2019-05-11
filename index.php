@@ -4,7 +4,11 @@
 <link rel="stylesheet" href="navbar.css">
 <?php include('navbar.php'); ?>
 <body>
-<div align="left">
+
+<div class="main2">
+  
+</div>
+<div align="left" >
 <?php
 // se verifica daca utilizatorul este autentificat
 if (isset($_SESSION['Username']))

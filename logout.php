@@ -7,7 +7,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf8-unicode-ci"/>
 </head>
 <body>
+<div class="main2">
 
+
+<?php include('navbar.php'); ?>
 <?php
 
 require_once("config.php");
@@ -57,6 +60,8 @@ if (!isset($_SESSION['name'])) {
 // Print a customized message.
 echo "<h3>Ati fost delogat cu succes.</h3>";
 ?>
+
+</div>
 </body>
 </html>
 

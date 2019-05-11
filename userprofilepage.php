@@ -4,6 +4,7 @@
 <head>
     <title><?php echo $name; ?>'s Profile </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8-unicode-ci"/>
+    <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
 <div>

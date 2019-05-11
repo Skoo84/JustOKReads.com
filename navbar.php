@@ -10,7 +10,7 @@ body {
 
 .navbar {
   overflow: hidden;
-  background-color: #1569C7;
+  background-color:	#293545;
   position: fixed;
   top: 0;
   width: 100%;
