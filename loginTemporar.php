@@ -1,4 +1,5 @@
 <html>
+<?php session_start();?>
 <?php include("config.php");?>
 <body>
 <h2>Login</h2>
@@ -16,5 +17,5 @@
 <br><br>
 <a href='index.php' target='_self'>Prima pagina</a>
 &nbsp; | &nbsp;
-<a href='inscriere.php' target='_self'>Inregistrare utilizator nou</a>
+<a href='createUser.php' target='_self'>Inregistrare utilizator nou</a>
 </body></html>

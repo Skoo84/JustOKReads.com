@@ -8,7 +8,7 @@
 <body>
 
 <?php
-
+php session_start();
 // This page edits a user.
 // This page is accessed through userprofile.php
 
