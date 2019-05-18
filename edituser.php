@@ -6,9 +6,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf8-unicode-ci"/>
 </head>
 <body>
+<?php include('navbar.php'); ?>
 
 <?php 
-session_start();
 // This page edits a user.
 // This page is accessed through userprofile.php
 

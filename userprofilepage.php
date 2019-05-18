@@ -2,10 +2,10 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title><?php session_start(); echo $_SESSION['Username']?>'s Profile</title>
+    <?php include('navbar.php'); ?>
+    <title><?php echo $_SESSION['Username']?>'s Profile</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8-unicode-ci"/>
     <link rel="stylesheet" href="navbar.css">
-    <?php include('navbar.php'); ?>
 </head>
 <body>
 <div class="main2"><h1>Welcome <?php echo $_SESSION['Username']?></h1></div>

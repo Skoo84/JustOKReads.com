@@ -1,5 +1,5 @@
 <html>
-<?php session_start();?>
+
 <?php include("config.php");?>
 <link rel="stylesheet" href="navbar.css">
 <?php include('navbar.php'); ?>
@@ -15,13 +15,6 @@ if (isset($_SESSION['Username']))
   {
     $userName = ($_SESSION['Username']);
     echo "<p>The user: ".$userName." is logged in.</p>";
-    echo "<h1>";
-    echo "<a href='logout.php' target='_self'  >Logout</a>";
-    echo "<br>";
-    echo "<a href='search.php' target='_self'>Search</a>";
-    echo "<br>";
-    echo "<a href='userprofilepage.php' target='_self'>User Profile</a>";
-    echo "</h1>";
 
   }
 // daca utilizatorul nu este autentificat

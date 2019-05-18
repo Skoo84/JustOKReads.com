@@ -75,8 +75,21 @@ body {
 <a href="index.php" class="active">
   <img src="logo.png" alt="JustOKReads.com" style="width:151px;border:0;">
 </a>
+  <?php 
+  session_start();
+  if (isset($_SESSION['Username']))
+  {
+    echo '<a href="logout.php">Logout</a>';
+  }
+  else {
+    echo '<a href="login.php">Login</a>';
+  }
+    ?>
   <a href="search.php">Search</a>
-  <a href="login.php">Login</a>
+  <a href='userprofilepage.php'>User Profile</a>
+
+
+
 
 </div>
 

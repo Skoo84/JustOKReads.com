@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
+<?php include('navbar.php'); ?>
 
 <!-- Anchor for footer - return to top of the page -->
 <div class="main">
@@ -24,7 +25,6 @@
 
 </div>
 <?php
-session_start();
 // se verifica daca utilizatorul este autentificat
 if (isset($_SESSION['Username']))
   {
@@ -135,7 +135,7 @@ else
 }
     
 ?>
-<?php include('navbar.php'); ?>
+
 
 </body>
 </html>
