@@ -27,7 +27,7 @@ if(isset($_GET['authorid']))
     while ($r=mysqli_fetch_array($result)) {
         $authorid=$r['id'];
         $authorname=$r['name'];
-        echo "<a align='left' href='http://localhost/JustOKReads.com/author.php?authorid=$authorid'> Name of the Author: ".$authorname."</a> <br />";
+        echo "<a align='left' href='http://JustOKReads.com/author.php?authorid=$authorid'> Name of the Author: ".$authorname."</a> <br />";
         $authorbio=$r['bio'];
         echo "<p align='left'> Bio: ".$authorbio."</p>";
         $authorpic=$r['picture'];
@@ -40,10 +40,11 @@ if(isset($_GET['authorid']))
 
 
     $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
-    $query="SELECT a.id, a.name, a.bio, a.picture, b.id, b.title, b.publisher_id, b.release_date,b.cover_photo,b.description
+    $query="SELECT a.id, a.name, a.bio, a.picture, b.id, b.title, b.publisher_id, b.release_date,b.cover_photo,b.description,p.name
     FROM authors a
     INNER JOIN books_authors ba ON ba.author_id=a.id AND a.id='$idAuthor'
-    INNER JOIN books b ON ba.book_id=b.id";
+    INNER JOIN books b ON ba.book_id=b.id
+    INNER JOIN publishers p ON b.publisher_id = p.id";
     $result=mysqli_query($db,$query);
 
     
@@ -53,10 +54,15 @@ if(isset($_GET['authorid']))
     if ($result->num_rows > 0){
     while ($r=mysqli_fetch_array($result)) {
         $publisherid=$r['publisher_id'];
+        $publishername=$r['p.name'];
+
         $bookTitle=$r['title'];
-        echo "<p align='left'> Boook Name: ".$bookTitle."</p>";
+        echo "<p align='left'> Book Name: ".$bookTitle."</p>";
         $publisherID=$r['publisher_id'];
         echo "<p align='left'> Publisher ID: ".$publisherid."</p>";
+        
+        echo "<p align='left'> Publisher ID: ".$publishername."</p>";
+
         echo "<p align='left'> ------------------------------</p>";
       }
     } else {echo "The Author doesn't exist.";}
