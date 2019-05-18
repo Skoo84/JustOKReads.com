@@ -59,9 +59,8 @@ if(isset($_GET['authorid']))
         $bookTitle=$r['title'];
         echo "<p align='left'> Book Name: ".$bookTitle."</p>";
         $publisherID=$r['publisher_id'];
-                
-        echo "<p align='left'> Publisher : ".$publishername."</p>";
 
+        echo "<p align='left'> Publisher : ".$publishername."</p>";
         echo "<p align='left'> ------------------------------</p>";
       }
     } else {echo "The Author doesn't exist.";}
