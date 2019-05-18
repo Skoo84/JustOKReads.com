@@ -6,6 +6,7 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #DAD1C1
 }
 
 .navbar {
