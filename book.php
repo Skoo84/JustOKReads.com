@@ -71,7 +71,7 @@ if(isset($_GET['bookid']))
     while ($r=mysqli_fetch_array($result)) {
         $bookid=$r['id'];
         $bookname=$r['title'];
-        echo "<p align='left'>  ".$bookname."</p> <br />";
+        echo "<p align='left'> <b> ".$bookname."</b></p> <br />";
         $coverpic=$r['cover_photo'];
         echo "<img src='".$coverpic."' alt='".$bookname."' style='width:300px;height:200px'>";
 
@@ -153,7 +153,7 @@ if(isset($_GET['bookid']))
 ?>
 </div>
 </body>
-<div class="ratings">
+<div class="ratings" style="padding-left: 15px;">
      <p>ratings: <?php echo star_rating($rating); ?> based on <?php echo "$feedbacks"  ?> reviews </p>
   </div>
   
