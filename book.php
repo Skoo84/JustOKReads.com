@@ -10,13 +10,15 @@
       color: #ff9900;
     }
   </style>
+  
+
 </head>
 <body>
 <div class="main2">
 
-
+</div>
 <?php include('navbar.php'); ?>
-
+<div style="padding-left: 15px;">
 <?php
  session_start();
 
@@ -70,12 +72,14 @@ if(isset($_GET['bookid']))
         $bookid=$r['id'];
         $bookname=$r['title'];
         echo "<p align='left'>  ".$bookname."</p> <br />";
+        $coverpic=$r['cover_photo'];
+        echo "<img src='".$coverpic."' alt='".$bookname."' style='width:300px;height:200px'>";
+
         $bookdescription=$r['description'];
         echo "<p align='left'>  ".$bookdescription."</p> <br />";
         $releasedate=$r['release_date'];
         echo "<p align='left'> Release date: ".$releasedate."</p>";
         $coverpic=$r['cover_photo'];
-        echo "<img src='".$coverpic."' alt='".$bookname."' style='width:300px;height:200px'>";
         echo "<p align='left'> ------------------------------</p>";
       }
     } 
