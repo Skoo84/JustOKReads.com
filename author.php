@@ -28,10 +28,12 @@ if(isset($_GET['authorid']))
         $authorid=$r['id'];
         $authorname=$r['name'];
         echo "<a align='left' href='http://JustOKReads.com/author.php?authorid=$authorid'> Name of the Author: ".$authorname."</a> <br />";
+
         $authorbio=$r['bio'];
         echo "<p align='left'> Bio: ".$authorbio."</p>";
         $authorpic=$r['picture'];
-        echo "<p align='left'> Pic: ".$authorpic."</p>";
+        echo "<img src='".$authorpic."' alt='".$bookname."' style='width:300px;height:200px'>";
+
         echo "<p align='left'> ------------------------------</p>";
       }
     } 
