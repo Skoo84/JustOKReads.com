@@ -20,7 +20,6 @@
 <?php include('navbar.php'); ?>
 <div style="padding-left: 15px;">
 <?php
- session_start();
 
 function star_rating($rating)
 {
