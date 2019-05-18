@@ -21,9 +21,9 @@ body {
   display: block;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 5px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 25px;
 }
 
 .navbar a:hover {
@@ -71,7 +71,7 @@ body {
 </head>
 <body>
 <div class="navbar">
-<a href="index.php" class="active">Home
+<a href="index.php" class="active">
   <img src="logo.png" alt="JustOKReads.com" style="width:151px;border:0;">
 </a>
   <a href="search.php">Search</a>
