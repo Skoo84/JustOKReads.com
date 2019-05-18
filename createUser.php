@@ -1,5 +1,6 @@
 <html>
   <style>.error {color:#FF0000;}</style>
+  <title>Create a new User</title>
   <link rel="stylesheet" href="navbar.css">
 <body>
 

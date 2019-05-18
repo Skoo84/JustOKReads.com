@@ -1,6 +1,7 @@
 <html>
 
 <?php include("config.php");?>
+<title>Just OK Reads</title>
 <link rel="stylesheet" href="navbar.css">
 <?php include('navbar.php'); ?>
 <body>

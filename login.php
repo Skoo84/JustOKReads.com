@@ -1,5 +1,6 @@
 <html>
 <?php include("config.php");?>
+<title>Login Page</title>
 <link rel="stylesheet" href="navbar.css">
 <?php include('navbar.php'); ?>
 <body>
