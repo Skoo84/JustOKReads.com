@@ -70,9 +70,8 @@ body {
 </style>
 </head>
 <body>
-
 <div class="navbar">
-<a href="index.php" class="active">Home</a>
+<a href="index.php" class="active">Home
   <img src="logo.png" alt="JustOKReads.com" style="width:151px;border:0;">
 </a>
   <a href="search.php">Search</a>
