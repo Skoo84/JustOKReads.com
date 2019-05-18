@@ -53,14 +53,13 @@ if(isset($_GET['authorid']))
 
     if ($result->num_rows > 0){
     while ($r=mysqli_fetch_array($result)) {
-        $publisherid=$r['publisher_id'];
+        
         $publishername=$r['pubname'];
 
         $bookTitle=$r['title'];
         echo "<p align='left'> Book Name: ".$bookTitle."</p>";
         $publisherID=$r['publisher_id'];
-        echo "<p align='left'> Publisher ID: ".$publisherid."</p>";
-        
+                
         echo "<p align='left'> Publisher : ".$publishername."</p>";
 
         echo "<p align='left'> ------------------------------</p>";
