@@ -54,7 +54,7 @@ if(isset($_GET['query']))
     while ($r=mysqli_fetch_array($result)) {
         $authorid=$r['id'];
         $authorname=$r['name'];
-        echo "<a align='left' href='http://localhost/JustOKReads.com/author.php?authorid=$authorid'> Name of the Author: ".$authorname."</a> <br />";
+        echo "<a align='left' href='author.php?authorid=$authorid'> Name of the Author: ".$authorname."</a> <br />";
         $authorbio=$r['bio'];
         echo "<p align='left'> Bio: ".$authorbio."</p>";
         $authorpic=$r['picture'];
@@ -83,7 +83,7 @@ if(isset($_GET['query']))
       while ($r=mysqli_fetch_array($result)) {
           $bookid=$r['id'];
           $booktitle=$r['title'];
-          echo "<a align='left' href='http://localhost/JustOKReads.com/book.php?bookid=$bookid'> Title of the Book: ".$booktitle."</a><br />";
+          echo "<a align='left' href='book.php?bookid=$bookid'> Title of the Book: ".$booktitle."</a><br />";
           $publisherId=$r['publisher_id'];
           $publisherName=$r['name'];
           echo "<p align='left'> Publisher :".$publisherName."</p> <br />";
