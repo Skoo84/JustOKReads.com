@@ -3,6 +3,7 @@ $servername = "echipa5.cio39zzweoyk.eu-west-1.rds.amazonaws.com";
 $username = "admin";
 $password = "nuav3Msef";
 $db_name = "echipa5";
+$max_file_size = "504500";
 
 $tbl_name_authors = "authors";
 $tbl_name_books = "books";
