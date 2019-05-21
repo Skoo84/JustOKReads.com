@@ -80,6 +80,9 @@ body {
   if (isset($_SESSION['Username']))
   {
     echo '<a href="logout.php">Logout</a>';
+    if ($_SESSION['RoleId']>=7){
+      echo '<a href="createAuthor.php">Add Author</a>';
+    }
   }
   else {
     echo '<a href="login.php">Login</a>';

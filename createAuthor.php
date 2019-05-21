@@ -25,6 +25,11 @@ function test_input($data)
     $data=htmlspecialchars($data);
     return $data;
   }
+
+if ($_SESSION['RoleId'] < 7){
+
+          echo "<p align='left'> You are not allowed to add new Authors, please contract an administrator if you need this rights.</p>";
+} else {
 // Check if data was sent through the form
 if ($_SERVER["REQUEST_METHOD"]=="POST")
   {
@@ -117,6 +122,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
             header("Location: createAuthor.php");
           }
   }
+
+}
 ?>
 <h2>Register a new Author</h2>
 <p><span class="error">* Mandatory field</span></p>
