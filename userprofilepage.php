@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
-<div class="main2"><h1>Welcome <?php echo $_SESSION['Username']?></h1></div>
+<div class="main2"></div>
 <div>
 <?php
 
 // get the user details from data base
 if (isset($_SESSION['UserID'])) {
+    echo '<h1>Welcome <?php echo '.$_SESSION['Username'].'?></h1>';
     require_once("config.php");
     $db = new mysqli($servername, $username, $password, $db_name);
 // Check connection
@@ -59,6 +60,10 @@ if (isset($_SESSION['UserID'])) {
     }
     $db->close();
 }
+    else {
+        echo "<h1>In order to see the User Profile page, you have be logged in.</h1>";
+        echo "<a href='login.php' target='_self'>Login</a>";
+    }
 ?>
 
 </div>
