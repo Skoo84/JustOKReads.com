@@ -145,9 +145,4 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     <input type="submit" name="submit" value="Trimite">
   </fieldset>  
   <br>
- 
-<br><br>
-<a href='index.php' target='_self'>Home Page</a>
-&nbsp; | &nbsp;
-<a href='login.php' target='_self'>Login</a>
 </body></html>
