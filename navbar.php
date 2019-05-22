@@ -91,7 +91,7 @@ body {
   <a href="search.php">Search</a>
   <a href='userprofilepage.php'>User Profile</a>
   <a href='latestbooks.php'>Latest Additions</a>
-  <a href='forum\index.php'>Forum</a>
+  <a href='http://forumjor.eu-west-1.elasticbeanstalk.com'>Forum</a>
   <a href='contactus.php'>Contact Us</a>
 
 
