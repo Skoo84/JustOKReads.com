@@ -1,7 +1,0 @@
-{
-    "require": {
-        "illuminate/database": "4.2.*",
-      "ext-gd": "*",
-      "ext-curl": "*"
-    }
-}
