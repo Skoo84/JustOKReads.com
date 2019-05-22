@@ -16,6 +16,7 @@
       position: fixed;
       top: 0;
       width: 100%;
+      z-index: 22222;
     }
 
     .navbar a {
@@ -87,8 +88,9 @@
       echo '<a href="login.php">Login</a>';
     }
     ?>
-    <a href="search.php">Search</a>
-    <a href='userprofilepage.php'>User Profile</a>
+  <a href="search.php">Search</a>
+  <a href='userprofilepage.php'>User Profile</a>
+  <a href='latestbooks.php'>Latest Additions</a>
 
 
 
