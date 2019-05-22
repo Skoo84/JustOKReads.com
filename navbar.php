@@ -90,6 +90,7 @@ body {
     ?>
   <a href="search.php">Search</a>
   <a href='userprofilepage.php'>User Profile</a>
+  <a href='latestbooks.php'>Lates Additions</a>
 
 
 
