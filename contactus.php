@@ -88,6 +88,7 @@ require('constant.php');
 </div>
 <div id="central">
 	<div class="content">
+	<h1></h1>
 		<h1>Contact Form</h1>
 		<p>Send your comments through this form and we will get back to you. </p>
 		<div id="message">

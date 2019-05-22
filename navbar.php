@@ -91,7 +91,7 @@ body {
   <a href="search.php">Search</a>
   <a href='userprofilepage.php'>User Profile</a>
   <a href='latestbooks.php'>Latest Additions</a>
-  <a href='contactus.php'>Latest Additions</a>
+  <a href='contactus.php'>Contact Us</a>
 
 
 
