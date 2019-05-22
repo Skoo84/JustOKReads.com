@@ -1,0 +1,35 @@
+{
+  "name": "codoforum",
+  "version": "1.0.0",
+  "description": "https://codologic.com/forum/index.php?u=/topic/8961/installer-bombs#post-19411",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack  -d --watch --config webpack.config.js",
+    "build": "webpack  --config webpack.config.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://evnix@bitbucket.org/evnix/codoforum.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/evnix/codoforum#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "dependencies": {
+    "mithril": "^1.1.6",
+    "webpack": "^4.12.0",
+    "webpack-command": "^0.2.1"
+  }
+}
