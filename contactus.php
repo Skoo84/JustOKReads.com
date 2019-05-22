@@ -82,7 +82,10 @@ require('constant.php');
 	<script src='https://www.google.com/recaptcha/api.js'></script>	
 </head>
 <body>
+<div class="main2">
 
+<?php include('navbar.php'); ?>
+</div>
 <div id="central">
 	<div class="content">
 		<h1>Contact Form</h1>
