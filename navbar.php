@@ -93,9 +93,6 @@ body {
   <a href='latestbooks.php'>Latest Additions</a>
   <a href='codoforum.v.4.7.0\index.php'>Forum</a>
   <a href='contactus.php'>Contact Us</a>
-  
-
- 
 
 
 
