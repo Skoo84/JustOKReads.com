@@ -5,6 +5,8 @@ require('constant.php');
 <html lang="en">
 <head>
 	<title>Contact Us</title>
+	<link rel="stylesheet" href="navbar.css">
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="component/jquery/jquery-3.2.1.min.js"></script>
