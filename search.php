@@ -57,7 +57,7 @@
           $authorbio = $r['bio'];
           echo "<p align='left'> Bio: " . $authorbio . "</p>";
           $authorpic = $r['picture'];
-          echo "<img src='" . $authorpic . "' alt='" . $authorname . "' style='width:300px;height:200px'>";
+          echo "<img src='" . $authorpic . "' alt='" . $authorname . "' style='width:300px'>";
 
 
           echo "<p align='left'> ------------------------------</p>";
@@ -92,7 +92,7 @@
           $coverPhoto = $r['cover_photo'];
           $description = $r['description'];
           echo "<span align='left'>Release Date : " . $releaseDate . ", Description:" . $description . "</span> <br />";
-          echo "<img src='" . $coverPhoto . "' alt='" . $booktitle . "' style='width:300px;height:200px'>";
+          echo "<img src='" . $coverPhoto . "' alt='" . $booktitle . "' style='width:300px'>";
           echo "<p align='left'> ------------------------------</p>";
         }
       } else {
