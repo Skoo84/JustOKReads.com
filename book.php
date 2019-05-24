@@ -2,13 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Book</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8-unicode-ci" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf8-unicode-ci" /> -->
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="js/rating.js"></script>
   <style type="text/css">
     .ratings i {
       color: #ff9900;
@@ -78,8 +80,9 @@ if(isset($_GET['bookid']))
         $coverpic=$r['cover_photo'];
         echo "<img src='".$coverpic."' alt='".$bookname."' style='width:300px;height:200px'>";
 
-        $bookdescription=$r['description'];
-        echo "<p align='left'>  ".$bookdescription."</p> <br />";
+        $bookdescription=preg_replace('/[^A-Za-z0-9ÄäÜüÖöß]/', ' ', $r['description']);
+        
+        echo "<p align='left'>  ".htmlentities($r['description'], ENT_QUOTES | ENT_IGNORE, "UTF-8")."</p> <br />";
         $releasedate=$r['release_date'];
         echo "<p align='left'> Release date: ".$releasedate."</p>";
         $coverpic=$r['cover_photo'];
@@ -226,8 +229,12 @@ if(isset($_GET['bookid']))
                 
                 $oneStarRatingPercent = round(($oneStarRating/5)*100);
                 $oneStarRatingPercent = !empty($oneStarRatingPercent)?$oneStarRatingPercent.'%':'0%';
-                
+                $link = "book.php?bookid=".$bookId;
+                if (isset($_GET['see_more'])) {
+                   $link = $link."&see_more=yes";
+                }
                 ?>
+                <a href="<?php echo $link."&rating=5" ?>">
                 <div class="pull-left">
                     <div class="pull-left" style="width:35px; line-height:1;">
                         <div style="height:9px; margin:5px 0;">5 <span class="glyphicon glyphicon-star"></span></div>
@@ -241,7 +248,8 @@ if(isset($_GET['bookid']))
                     </div>
                     <div class="pull-right" style="margin-left:10px;"><?php echo $fiveStarRating; ?></div>
                 </div>
-                
+                </a>
+                <a href="<?php echo $link."&rating=4" ?>">
                 <div class="pull-left">
                     <div class="pull-left" style="width:35px; line-height:1;">
                         <div style="height:9px; margin:5px 0;">4 <span class="glyphicon glyphicon-star"></span></div>
@@ -255,6 +263,8 @@ if(isset($_GET['bookid']))
                     </div>
                     <div class="pull-right" style="margin-left:10px;"><?php echo $fourStarRating; ?></div>
                 </div>
+            </a>
+            <a href="<?php echo $link."&rating=3" ?>">
                 <div class="pull-left">
                     <div class="pull-left" style="width:35px; line-height:1;">
                         <div style="height:9px; margin:5px 0;">3 <span class="glyphicon glyphicon-star"></span></div>
@@ -268,6 +278,8 @@ if(isset($_GET['bookid']))
                     </div>
                     <div class="pull-right" style="margin-left:10px;"><?php echo $threeStarRating; ?></div>
                 </div>
+            </a>
+            <a href="<?php echo $link."&rating=2" ?>">
                 <div class="pull-left">
                     <div class="pull-left" style="width:35px; line-height:1;">
                         <div style="height:9px; margin:5px 0;">2 <span class="glyphicon glyphicon-star"></span></div>
@@ -281,6 +293,8 @@ if(isset($_GET['bookid']))
                     </div>
                     <div class="pull-right" style="margin-left:10px;"><?php echo $twoStarRating; ?></div>
                 </div>
+            </a>
+            <a href="<?php echo $link."&rating=1" ?>">
                 <div class="pull-left">
                     <div class="pull-left" style="width:35px; line-height:1;">
                         <div style="height:9px; margin:5px 0;">1 <span class="glyphicon glyphicon-star"></span></div>
@@ -294,9 +308,10 @@ if(isset($_GET['bookid']))
                     </div>
                     <div class="pull-right" style="margin-left:10px;"><?php echo $oneStarRating; ?></div>
                 </div>
+            </a>
             </div>      
             <div class="col-sm-3">
-                <button type="button" id="rateProduct" class="btn btn-info <?php if(!empty($_SESSION['userid']) && $_SESSION['userid']){ echo 'login';} ?>">Rate this product</button>
+                <button type="button" id="rateProduct" class="btn btn-info <?php if(isset($_SESSION['Username'])){ echo 'login';} ?>">Rate this product</button>
             </div>      
         </div>
         <div class="row">
@@ -304,11 +319,23 @@ if(isset($_GET['bookid']))
                 <hr/>
                 <div class="review-block">      
                 <?php
-                 
-                $query="SELECT reviews.title, reviews.description, reviews.rating, users.name,users.username, users.profile_picture  FROM reviews 
+                $seemore = " order by users.id asc limit 5";
+                if (isset($_GET['delete'])) {
+
+                    $query = "DELETE FROM reviews WHERE user_id=".$_GET['userid']." AND book_id=".$_GET['bookid'];
+                    mysqli_query($db,$query);
+                }
+                 if (isset($_GET['see_more'])) {
+                     $seemore = "";
+                 }
+                 $rate = "";
+                 if (isset($_GET['rating'])) {
+                     $rate = " AND reviews.rating=".$_GET['rating'];
+                 }
+                $query="SELECT reviews.book_id, reviews.user_id, reviews.title, reviews.description, reviews.rating, users.name,users.username, users.profile_picture, users.role_id  FROM reviews 
    INNER JOIN users
      ON reviews.user_id = users.id
- WHERE reviews.book_id = '$bookId' order by users.id asc limit 5";
+ WHERE reviews.book_id = '$bookId'".$rate.$seemore;
                 $result=mysqli_query($db,$query);
                 if ($result->num_rows > 0){
                      
@@ -343,16 +370,97 @@ if(isset($_GET['bookid']))
                                 <?php } ?>
                             </div>
                             <div class="review-block-title"><?php echo $r['title']; ?></div>
-                            <div class="review-block-description"><?php echo $r['description']; ?></div>
+                            <div class="review-block-description"><?php echo htmlspecialchars($r['description'], ENT_QUOTES, 'UTF-8'); ?></div>
+                            <?php
+                                if (isset($_SESSION['UserID'])) {
+                                    if ($_SESSION['UserID'] == $r['user_id'] && $_SESSION['RoleId'] != 1 && $_SESSION['RoleId'] != 2 && $_SESSION['RoleId'] != 7 && $_SESSION['RoleId'] != 8 && $_SESSION['RoleId'] != 9) {
+                                        echo '<button type="button" id="editRate" class="btn btn-warning login">Edit Review</button>';
+                                        echo '&nbsp;<a href="book.php?bookid='.$bookId.'&userid='.$_SESSION['UserID'].'&delete=true"><button type="button" class="btn btn-danger login">Delete Review</button></a>';
+                                    }
+                                    else if($_SESSION['RoleId']==1 ||$_SESSION['RoleId']==2 ||$_SESSION['RoleId']==7 ||$_SESSION['RoleId']==8 ||$_SESSION['RoleId']==9){
+                                    ?> 
+                                    <input type="hidden" name="checkdesp" id="<?php echo $r['user_id'] ?>" value=" ' <?php echo htmlspecialchars($r['description'], ENT_QUOTES, 'UTF-8') ?> '">
+                                    <input type="hidden" name="checkdesp" id="<?php echo $r['user_id'] ?>title" value=" <?php echo htmlspecialchars($r['title'], ENT_QUOTES, 'UTF-8') ?> ">
+                                    <button type="button" onclick="editReviewForAdmin( '<?php echo $r['user_id'] ?>', '<?php echo $r['rating'] ?>' )" class="btn btn-warning login">Edit Review</button>
+                                     
+                                     <?php
+                                     echo '&nbsp;<a href="book.php?bookid='.$bookId.'&userid='.$r['user_id'].'&delete=true"><button type="button" class="btn btn-danger login">Delete Review</button></a>';   
+                                    }
 
+                                }
+                            ?>
                         </div>
                     </div>
                     <hr/>                   
-                <?php } }
+                <?php }
+                if (!isset($_GET['see_more'])) {
+                    echo "<a href='book.php?bookid=".$bookId."&see_more=yes'>See more reviews...</a>";
+                }
+
+            }
 
             }?>
                 </div>
             </div>
         </div>  
+    </div>
+    <div id="ratingSection" style="display:none; padding-left: 5px; padding-right: 5px;">
+        <div class="row">
+            <div class="col-sm-12">
+                <form id="ratingForm" method="POST">                    
+                    <div class="form-group">
+                        <h4>Rate this product</h4>
+                        <button type="button" class="btn btn-warning btn-sm rateButton" aria-label="Left Align">
+                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-grey btn-sm rateButton" aria-label="Left Align">
+                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-grey btn-sm rateButton" aria-label="Left Align">
+                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-grey btn-sm rateButton" aria-label="Left Align">
+                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-grey btn-sm rateButton" aria-label="Left Align">
+                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                        <input type="hidden" class="form-control" id="rating" name="rating" value="1">
+                        <input type="hidden" class="form-control" id="itemId" name="itemId" value="<?php echo $_GET['bookid']; ?>">
+                        <input type="hidden" name="action" id="action" value="saveRating">
+                        <input type="hidden" name="userID" value="" id="userID">
+                    </div>      
+                    <div class="form-group">
+                        <label for="usr">Title*</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Comment*</label>
+                        <textarea class="form-control" rows="5" id="comment" name="comment" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info" id="saveReview">Save Review</button> <button type="button" class="btn btn-info" id="cancelReview">Cancel</button>
+                    </div>          
+                </form>
+            </div>
+        </div>      
+    </div>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="loginmodal-container">
+                <h1>Login to rate this product</h1><br>
+                <div style="display:none;" id="loginError" class="alert alert-danger">Invalid username/Password</div>
+                <form method="post" id="loginForm" name="loginForm">
+                    <input type="text" name="user" placeholder="Username" required>
+                    <input type="password" name="pass" placeholder="Password" required>
+                    <input type="hidden" name="action" value="userLogin">
+                    <input type="submit" name="login" class="login loginmodal-submit" value="Login">                     
+                </form>
+                <div class="login-help">                    
+                    
+                </div>
+            </div>
+        </div>
     </div>
 </html>
