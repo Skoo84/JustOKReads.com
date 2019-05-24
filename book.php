@@ -91,22 +91,22 @@ if(isset($_GET['bookid']))
     } 
     $db->close();
 
-    $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
-    $query="SELECT r.book_id, avg(r.rating), count(r.rating) FROM reviews r
-    where book_id = '$idBook'";
-    $result=mysqli_query($db,$query);
-    if ($result->num_rows > 0){
+    // $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
+    // $query="SELECT r.book_id, avg(r.rating), count(r.rating) FROM reviews r
+    // where book_id = '$idBook'";
+    // $result=mysqli_query($db,$query);
+    // if ($result->num_rows > 0){
 
 
-    while ($r=mysqli_fetch_array($result)) {
-        $rating=$r['avg(r.rating)'];
-        $feedbacks=$r['count(r.rating)'];
+    // while ($r=mysqli_fetch_array($result)) {
+    //     $rating=$r['avg(r.rating)'];
+    //     $feedbacks=$r['count(r.rating)'];
         
-        echo "<p align='left'> Rating: ".$rating."</p>";
-        echo "<p align='left'> ------------------------------</p>";
-      }
-    } 
-    $db->close();
+    //     echo "<p align='left'> Rating: ".$rating."</p>";
+    //     echo "<p align='left'> ------------------------------</p>";
+    //   }
+    // } 
+    // $db->close();
 
     
     
