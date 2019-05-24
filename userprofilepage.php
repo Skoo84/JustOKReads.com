@@ -36,6 +36,12 @@
                 <td>' . $row["username"] . '</td>
             </tr>';
                     echo '<tr>
+                    <td></td>
+                <td><img src=' . $row["username"] .'>" </td>
+                
+
+            </tr>';
+                    echo '<tr>
                 <td>Birth date:</td>
                 <td>' . $row["birth_date"] . '</td>
             </tr>';
