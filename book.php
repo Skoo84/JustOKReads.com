@@ -78,7 +78,7 @@ if(isset($_GET['bookid']))
         $bookname=$r['title'];
         echo "<p align='left'> <b> ".$bookname."</b></p> <br />";
         $coverpic=$r['cover_photo'];
-        echo "<img src='".$coverpic."' alt='".$bookname."' style='width:300px;height:200px'>";
+        echo "<img src='".$coverpic."' alt='".$bookname."' style='width:300px'>";
 
         $bookdescription=preg_replace('/[^A-Za-z0-9ÄäÜüÖöß]/', ' ', $r['description']);
         
