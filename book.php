@@ -102,9 +102,9 @@ if(isset($_GET['bookid']))
         $rating=$r['avg(r.rating)'];
         $feedbacks=$r['count(r.rating)'];
         
-    //     echo "<p align='left'> Rating: ".$rating."</p>";
-    //     echo "<p align='left'> ------------------------------</p>";
-    //   }
+        // echo "<p align='left'> Rating: ".$rating."</p>";
+        // echo "<p align='left'> ------------------------------</p>";
+      }
     } 
     $db->close();
 
