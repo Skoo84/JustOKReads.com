@@ -344,14 +344,14 @@ if(isset($_GET['bookid']))
                 while ($r=mysqli_fetch_array($result)){                
                     //$date=date_create($rating['created']);
                     //$reviewDate = date_format($date,"M d, Y");                      
-                    $profilePic = "user1.jpg";    
+                    $profilePic = "https://randomuser.me/api/portraits/lego/0.jpg";    
                     if($r['profile_picture']) {
                         $profilePic = $r['profile_picture'];    
                     }
                 ?>              
                     <div class="row">
                         <div class="col-sm-3">
-                            <img src="image/userpics/<?php echo $profilePic; ?>" class="img-rounded user-pic">
+                            <img src="<?php echo $profilePic; ?>" class="img-rounded user-pic">
                             <div class="review-block-name">By <a href="#"><?php echo $r['username']; ?></a></div>
                             <!-- <div class="review-block-date"><?php //echo $reviewDate; ?></div> -->
                         </div>
