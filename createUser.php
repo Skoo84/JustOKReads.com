@@ -129,9 +129,9 @@
       // Encrypt password with md5
       $usrPassword1 = md5($usrPassword1);
 
-      // Querry and insertion in database 
+      // Querry and insertion in database (modified default role id to one, FRESHMAN)
 
-      $query = "INSERT INTO $tbl_name_users (id, name, birth_date, username, email, password, role_id, about) VALUES ('$idnew', '$usrname1', '$birthDate', '$username1', '$email1', '$usrPassword1', '5','$about1')";
+      $query = "INSERT INTO $tbl_name_users (id, name, birth_date, username, email, password, role_id, about) VALUES ('$idnew', '$usrname1', '$birthDate', '$username1', '$email1', '$usrPassword1', '1','$about1')";
       $result = mysqli_query($db, $query);
 
       // Page where the user is redirected after complete
