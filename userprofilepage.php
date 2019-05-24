@@ -37,7 +37,7 @@
             </tr>';
                     echo '<tr>
                     <td></td>
-                <td><img src=' . $row["username"] .'> </td>
+                <td><img src=' . $row["profile_picture"] .'> </td>
                 
 
             </tr>';
