@@ -8,31 +8,33 @@
 </head>
 
 <body>
+ 
+<div class="main2">
 
-  <div class="main2">
+<?php include('navbar.php'); ?>
+</div>
 
-    <?php include('navbar.php'); ?>
-  </div>
+<?php
+if(isset($_GET['authorid']))
+{
+    require_once ("config.php");
+    $idAuthor = $_GET['authorid']; 
+  
+    $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
+    $query="SELECT * FROM $tbl_name_authors WHERE id = '$idAuthor'";
+    $result=mysqli_query($db,$query);
+    if ($result->num_rows > 0){
 
-  <?php
-  if (isset($_GET['authorid'])) {
-    require_once("config.php");
-    $idAuthor = $_GET['authorid'];
 
-    $db = mysqli_connect($servername, $username, $password, $db_name) or die("could not connect");
-    $query = "SELECT * FROM $tbl_name_authors WHERE id = '$idAuthor'";
-    $result = mysqli_query($db, $query);
-    if ($result->num_rows > 0) {
+    while ($r=mysqli_fetch_array($result)) {
+        $authorid=$r['id'];
+        $authorname=$r['name'];
+        echo "<a align='left' href='http://JustOKReads.com/author.php?authorid=$authorid'> Name of the Author: ".$authorname."</a> <br />";
 
-      while ($r = mysqli_fetch_array($result)) {
-        $authorid = $r['id'];
-        $authorname = $r['name'];
-        echo "<a align='left' href='http://JustOKReads.com/author.php?authorid=$authorid'> Name of the Author: " . $authorname . "</a> <br />";
-
-        $authorbio = $r['bio'];
-        echo "<p align='left'> Bio: " . $authorbio . "</p>";
-        $authorpic = $r['picture'];
-        echo "<img src='" . $authorpic . "' alt='" . $bookname . "' style='width:300px;height:200px'>";
+        $authorbio=$r['bio'];
+        echo "<p align='left'> Bio: ".$authorbio."</p>";
+        $authorpic=$r['picture'];
+        echo "<img src='".$authorpic."' alt='".$authorpic."' style='width:300px;height:200px'>";
 
         echo "<p align='left'> ------------------------------</p>";
       }
