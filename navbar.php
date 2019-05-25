@@ -94,9 +94,6 @@
   <a href='http://forumjor.eu-west-1.elasticbeanstalk.com'>Forum</a>
   <a href='contactus.php'>Contact Us</a>
 
-
-
-
   </div>
 
 </body>
