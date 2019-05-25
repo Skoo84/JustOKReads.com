@@ -32,7 +32,7 @@ if(isset($_GET['authorid']))
         $authorbio=$r['bio'];
         echo "<p align='left'> Bio: ".$authorbio."</p>";
         $authorpic=$r['picture'];
-        echo "<img src='".$authorpic."' alt='".$bookname."' style='width:300px;height:200px'>";
+        echo "<img src='".$authorpic."' alt='".$authorpic."' style='width:300px;height:200px'>";
 
         echo "<p align='left'> ------------------------------</p>";
       }
