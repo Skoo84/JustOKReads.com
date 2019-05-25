@@ -17,6 +17,10 @@
       top: 0;
       width: 100%;
       z-index: 22222;
+      box-shadow: none;
+    border: none;
+    line-height: initial;
+    /* Etc. */
     }
 
     .navbar a {
