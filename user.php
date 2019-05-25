@@ -1,6 +1,6 @@
 <?php
 session_start();
-// verificare user si parola
+// Checkin User and Password for login
 if (isset($_POST['submit']))
   {
   require_once ("config.php");
@@ -8,7 +8,7 @@ if (isset($_POST['submit']))
   $myusername=$_POST['username'];
   $mypassword=$_POST['parola'];
   $orderby=$_POST['order'];
-  // securizare date de login avoid sql injection
+  // Sanitization
   $myusername = stripslashes($myusername);
   $mypassword = stripslashes($mypassword);
   $myusername = mysqli_real_escape_string($db,$myusername);
@@ -26,7 +26,7 @@ while($r=mysqli_fetch_array($result))
    $RoleId=$r["role_id"];
    }
 $count=mysqli_num_rows($result);
-// daca ok, inregistrare user
+// Register the session details
 if($count==1){
 $_SESSION['Username'] = $Username;
 $_SESSION['UserID'] = $UserID;
@@ -36,7 +36,7 @@ $_SESSION['BirthDate'] = $BirthDate;
 $_SESSION['RoleId'] = $RoleId;
 echo "<meta http-equiv='refresh' content='0;URL=index.php'>";
 }
-// daca user sau parola incorecta
+// If user or passwod is incorrect
 else {
 echo "Utilizator sau parola incorecta. <br><br>
 <a href='index.php' target='_self'>Prima pagina</a>
@@ -47,4 +47,3 @@ echo "Utilizator sau parola incorecta. <br><br>
 ";
 }
 }
-?>

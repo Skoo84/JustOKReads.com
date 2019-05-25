@@ -1,7 +1,5 @@
 <html>
-<head>
-  <meta charset="UTF-8">
-</head>
+
 <?php include("config.php");
 
 $db=mysqli_connect($servername,$username,$password,$db_name) or die ("could not connect");
